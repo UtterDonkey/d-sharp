@@ -1,0 +1,22 @@
+{
+  "name": "d-sharp",
+  "version": "1.0.0",
+  "description": "The latest programming language with every feature you've ever wanted - D#",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UtterDonkey/d-sharp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UtterDonkey/d-sharp/issues"
+  },
+  "homepage": "https://github.com/UtterDonkey/d-sharp#readme",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}

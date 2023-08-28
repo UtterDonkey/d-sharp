@@ -1,0 +1,5 @@
+declare myFunction = ()=>{
+    console.log('Hello There!');
+    return 123;
+}
+console.log(myFunction);
