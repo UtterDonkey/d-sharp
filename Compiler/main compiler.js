@@ -161,9 +161,9 @@ class Compiler {
 
     insertVariableFunctions(code, declarations) {
         let charMap = code.split("").map((c, i) => { return { char: c, origIndex: i } });
-        declarations = declarations.map(e => { e.occurences = e.occurences.filter((f, i) => { return e.occurences.indexOf(f) == i }); return e; });
+        declarations = declarations.map(e => { e.occurences = e.occurences.filter((f, i) => { return e.occurences.indexOf(f) == i && i !== 0; }); return e; });
         for (let i of declarations) {
-            if (i.declarationIndex !== null) charMap = this.charMapSubstring(charMap, 0, i.declarationIndex, `const ${i.name}`).concat(this.charMapSubstring(charMap, i.declarationIndex + i.declarationType.length));
+            if (i.declarationIndex !== null) charMap = this.charMapSubstring(charMap, 0, i.declarationIndex, `const`).concat(this.charMapSubstring(charMap, i.declarationIndex + i.declarationType.length));
             for (let j of i.occurences) {
                 charMap = this.charMapSubstring(charMap, 0, j, `(await ${i.name}())`).concat(this.charMapSubstring(charMap, j + i.name.length));
             }
