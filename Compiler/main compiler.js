@@ -7,7 +7,7 @@ class Compiler {
             const vars = Vdec.vars;
             const varCompiled = this.insertVariableFunctions(code, vars);
             const Fstrings = this.getStrings(varCompiled);
-            const Sdec = this.getDeclerations(varCompiled, Fstrings, false, ["script"]);
+            const Sdec = this.getDeclerations(varCompiled, Fstrings, false, []);
             const scripts = Sdec.scripts;
             const funcCompiled = this.insertScriptFunctions(varCompiled, scripts);
             return {

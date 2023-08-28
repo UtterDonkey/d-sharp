@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/UtterDonkey/d-sharp#readme",
   "dependencies": {
+    "esbuild-minify-templates": "^0.11.0",
     "prompt-sync": "^4.2.0"
   }
 }

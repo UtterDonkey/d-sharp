@@ -1,4 +1,5 @@
 const prompt = require("prompt-sync")({ sigint: true });
+const esbuild = require('esbuild');
 const fs = require('fs');
 const mainCompiler = require('./main compiler.js');
 async function compile(path, target) {
@@ -7,10 +8,19 @@ async function compile(path, target) {
     console.log('Compiling Script...')
     const compiled = mainCompiler.compile(fileRead);
     console.log('Loading Runtime...');
-    const runtime = await fs.promises.readFile('runtime.js', { encoding: 'utf8' });
-    const runtimed = runtime.replace('// runtime', compiled.compiled);
+    const runtime = await fs.promises.readFile('runtime/runtime.js', { encoding: 'utf8' });
+    const runtimes = [
+        await fs.promises.readFile('runtime/job.js', { encoding: 'utf8' }),
+        await fs.promises.readFile('runtime/task.js', { encoding: 'utf8' }),
+        await fs.promises.readFile('runtime/sequence.js', { encoding: 'utf8' }),
+        compiled.compiled
+    ];
+    const runtimed = runtime.replace('// runtime', runtimes.join(';\n'));
+    console.log('Compressing...');
+    const compressed = (await esbuild.transform(runtimed, { minify: true })).code;
     console.log('Writing To target...');
-    await fs.promises.writeFile(target, runtimed);
+    await fs.promises.writeFile(target, compressed);
+    console.log('Compiled To: ' + target);
 
 }
 

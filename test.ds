@@ -1,6 +1,8 @@
-declare myFunction = ()=>{
-    console.log('Hello There!');
-    return 123;
+let sequence = [1, 2, 3, 4, 5];
+declare nextValue = function(){
+    const s = new Sequence(...sequence);
+    return s.forecastNext();
 }
-
-console.log(myFunction);
+console.log(nextValue);
+sequence = [1, 2, 4, 8, 16];
+console.log(nextValue);
