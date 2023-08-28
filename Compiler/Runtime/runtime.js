@@ -74,10 +74,10 @@
     String.prototype.toFloat = function () { return parseFloat(this) };
     String.prototype.toNumber = function () { return +(new Number(this)) };
     Number.prototype.isMultipleOf = function (n) { return this % n === 0 };
-    Number.prototype.isEven, function () {
+    Number.prototype.isEven = function () {
         return this % 2 === 0;
     }
-    Number.prototype.length, function () {
+    Number.prototype.length = function () {
         return this.toString().length;
     };
     Number.prototype.isRational = function () {

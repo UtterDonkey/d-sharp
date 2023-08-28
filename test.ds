@@ -1,8 +1,8 @@
-let sequence = [1, 2, 3, 4, 5];
-declare nextValue = function(){
-    const s = new Sequence(...sequence);
-    return s.forecastNext();
+declare currentTime = async function(){
+    const d = await (await fetch('https://timeapi.io/api/TIme/current/zone?timeZone=Europe/London')).json();
+    return d.hour.toString().padStart(2, '0') + ':' + d.minute.toString().padStart(2, '0') + '.' + d.seconds.toString().padStart(2, '0');
 }
-console.log(nextValue);
-sequence = [1, 2, 4, 8, 16];
-console.log(nextValue);
+
+setInterval(async function (){
+    console.log(currentTime);
+}, 1000);
